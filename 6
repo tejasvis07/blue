@@ -1,0 +1,23 @@
+EXP 6 
+#include <LiquidCrystal.h> 
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);  
+int sensorPin = A0; 
+void setup() { 
+  lcd.begin(16, 2);           
+  Serial.begin(9600);         
+} 
+void loop() { 
+  int value = analogRead(sensorPin);    
+  float voltage = value * (5.0 / 1023.0); 
+  lcd.setCursor(0, 0); 
+  lcd.print("Sensor: "); 
+  lcd.print(value); 
+  lcd.setCursor(0, 1); 
+  lcd.print("Volt: "); 
+  lcd.print(voltage); 
+  Serial.print("Sensor Value: ");
+  Serial.print(value); 
+  Serial.print("  Voltage: "); 
+  Serial.println(voltage); 
+  delay(1000); 
+}  
