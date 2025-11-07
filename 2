@@ -1,0 +1,19 @@
+EXP 2 ANALOG SENSOR INTERFACE 
+CONNECTION: 
+VCC (sensor) ──> 5V 
+OUT (sensor) ──> A0 
+GND (sensor) ──> GND 
+CODE 
+int sensorPin = A0; 
+void setup() { 
+  Serial.begin(9600); 
+} 
+void loop() { 
+  int value = analogRead(sensorPin); 
+  float voltage = value * (5.0 / 1023.0); 
+  Serial.print("Sensor Value: "); 
+  Serial.print(value); 
+  Serial.print("  Voltage: "); 
+  Serial.println(voltage); 
+  delay(500); 
+} 
