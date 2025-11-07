@@ -1,0 +1,24 @@
+EXP 4 UART COMMUNICATION 
+CONNECTION: 
+tx = rx 
+rx = tx 
+Transmi er Code (Arduino A): 
+CODE 
+void setup() { 
+  Serial.begin(9600);   
+} 
+void loop() { 
+  Serial.println("Data to Arduino B");   
+  delay(1000);                           
+} 
+Reciever code(ardunio B) 
+void setup() { 
+  Serial.begin(9600);   
+} 
+void loop() { 
+  if (Serial.available()) {          
+    String data = Serial.readStringUn l('\n');   
+    Serial.print("Received: "); 
+    Serial.println(data);            
+  } 
+} 
