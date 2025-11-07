@@ -1,0 +1,27 @@
+EXP 5 HTTP ESP32 
+#include <WiFi.h> 
+#include <HTTPClient.h> 
+const char* ssid = "Your_WiFi_Name"; 
+const char* password = "Your_WiFi_Password"; 
+void setup() { 
+  Serial.begin(115200); 
+  WiFi.begin(ssid, password); 
+  while (WiFi.status() != WL_CONNECTED) delay(500); 
+  Serial.println("WiFi Connected"); 
+} 
+void loop() { 
+  if (WiFi.status() == WL_CONNECTED) { 
+    HTTPClient h p; 
+    h p.begin("h ps://jsonplaceholder.typicode.com/posts/1"); 
+    int code = h p.GET(); 
+    if (code > 0) Serial.println(h p.getString()); 
+    h p.end(); 
+    h p.begin("h ps://jsonplaceholder.typicode.com/posts"); 
+    h p.addHeader("Content-Type", "applica on/json"); 
+    int postCode = h p.POST("{\"msg\":\"Hello from 
+ESP32\"}"); 
+    if (postCode > 0) Serial.println(h p.getString()); 
+    h p.end(); 
+  } 
+  delay(10000);  
+} 
