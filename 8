@@ -1,0 +1,22 @@
+EXP 8 BLUETOOTH LOW ENERGY 
+CONNECTION: 
+VCC 5V 
+GND GND 
+TXD 10 (RX) 
+RXD 11 (TX) 
+STATE 7 
+CODE 
+#include <So wareSerial.h> 
+So wareSerial BT(10, 11);  
+const int statePin = 7; 
+void setup() { 
+  Serial.begin(9600); 
+  BT.begin(9600); 
+  pinMode(statePin, INPUT); 
+  Serial.println("HC-05 Bluetooth Ready"); 
+} 
+void loop() { 
+  Serial.println(digitalRead(statePin) ? 
+"Bluetooth Connected" : "Not Connected"); 
+  delay(1000);  
+}
